@@ -13,4 +13,4 @@ class BugSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bug
         fields = '__all__'
-        read_only_fields = ('reported_by', 'created_at', 'updated_at')
+        read_only_fields = ("title","description","status","priority","screenshot","assigned_to","reported_by", "created_at", "updated_at")

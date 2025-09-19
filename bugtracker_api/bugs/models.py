@@ -17,7 +17,7 @@ class Bug(models.Model):
     ]
 
     reported_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reported_bugs")
-    assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_bugs")
+    assigned_to  = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="assigned_bugs")
     title = models.CharField(max_length=200)
     description = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='OPEN')
