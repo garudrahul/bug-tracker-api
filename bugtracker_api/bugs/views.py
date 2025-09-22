@@ -8,7 +8,8 @@ from rest_framework import status
 from .serializers import BugSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
-
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import MyTokenObtainPairSerializer
 
 @api_view(['GET', 'POST'])
 @parser_classes([MultiPartParser, FormParser])
@@ -46,21 +47,7 @@ def register_user(request):
     user = User.objects.create_user(username=username, password=password, email=email)
     return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
 
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
-# class RegisterSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ('id','username','password')
-#         extra_kwargs = {'password': {'write_only': True}}
-
-#     def create(self, validated_data):
-#         user = User(username=validated_data['username'])
-#         user.set_password(validated_data['password'])
-#         user.save()
-#         return user
-    
-
-# class RegisterView(generics.CreateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = RegisterSerializer
 
