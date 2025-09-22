@@ -15,10 +15,10 @@ class BugSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['reported_by', 'created_at'] 
         
-    def create(self, validated_data):
-        validated_data['reported_by'] = self.context['request'].user
-        return super().create(validated_data)
+    # def create(self, validated_data):
+    #     validated_data['reported_by'] = self.context['request'].user
+    #     return super().create(validated_data)
 
-    def update(self, instance, validated_data):
-        validated_data['reported_by'] = self.context['request'].user
-        return super().update(instance, validated_data)
+    # def update(self, instance, validated_data):
+    #     validated_data['reported_by'] = self.context['request'].user
+    #     return super().update(instance, validated_data)
